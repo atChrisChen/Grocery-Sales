@@ -1,0 +1,14 @@
+WITH sales_CUST AS(
+    SELECT *
+    FROM sales
+
+    LEFT JOIN products ON sales.productid = products.productid
+    LEFT JOIN categories ON products.categoryid = categories.categoryid
+
+    LEFT JOIN customers ON sales.customerid = customers.customerid
+    LEFT JOIN cities ON customers.cityid = cities.cityid
+
+    LEFT JOIN countries ON cities.countryid = countries.countryid
+)
+
+select * from sales_CUST limit 1000;
