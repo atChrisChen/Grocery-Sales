@@ -11,4 +11,19 @@ WITH sales_CUST AS(
     LEFT JOIN countries ON cities.countryid = countries.countryid
 )
 
-select * from sales_CUST limit 1000;
+select 
+    CONCAT(firstname, ' ', lastname) as customername,
+    categoryname,
+    productname,
+    price,
+    quantity,
+    discount,    
+    (price * quantity) - (price * discount) as total,
+    salesdate,
+    address,
+    cityname,
+    countryname,
+    resistant,
+    isallergic
+from sales_CUST
+limit 100;

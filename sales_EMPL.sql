@@ -11,4 +11,17 @@ WITH sales_EMPL AS(
     LEFT JOIN countries ON cities.countryid = countries.countryid
 )
 
-select * from sales_EMPL limit 1000;
+select 
+    CONCAT(firstname, ' ', lastname) as employeename,
+    categoryname,
+    productname,
+    price,
+    quantity,
+    discount,    
+    (price * quantity) - (price * discount) as total,
+    salesdate,
+    cityname,
+    countryname,
+    resistant,
+    isallergic
+from sales_EMPL
