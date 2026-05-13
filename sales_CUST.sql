@@ -1,5 +1,18 @@
 WITH sales_CUST AS(
-    SELECT *
+    SELECT
+        CONCAT(customers.firstname, ' ', customers.lastname) as customername,
+        categories.categoryname,
+        products.productname,
+        products.price,
+        sales.quantity,
+        sales.discount,  
+        (products.price * sales.quantity) * (1 - sales.discount) as totalprice,
+        sales.salesdate,
+        customers.address as customeraddress,
+        cities.cityname,
+        countries.countryname,
+        products.resistant,
+        products.isallergic
     FROM sales
 
     LEFT JOIN products ON sales.productid = products.productid
@@ -11,19 +24,5 @@ WITH sales_CUST AS(
     LEFT JOIN countries ON cities.countryid = countries.countryid
 )
 
-select 
-    CONCAT(firstname, ' ', lastname) as customername,
-    categoryname,
-    productname,
-    price,
-    quantity,
-    discount,    
-    (price * quantity) - (price * discount) as total,
-    salesdate,
-    address,
-    cityname,
-    countryname,
-    resistant,
-    isallergic
+select *
 from sales_CUST
-limit 100;

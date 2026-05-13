@@ -1,5 +1,20 @@
 WITH sales_EMPL AS(
-    SELECT *
+    SELECT
+        CONCAT(employees.firstname, ' ', employees.lastname) as employeename,
+        categories.categoryname,
+        products.productname,
+        products.price,
+        sales.quantity,
+        sales.discount,    
+        (products.price * sales.quantity) * (1 - sales.discount) as totalprice,
+        sales.salesdate,
+        cities.cityname,
+        countries.countryname,
+        products.resistant,
+        products.isallergic,
+        employees.birthdate as employeebirthdate,
+        employees.gender as employeegender,
+        employees.hiredate as employeehiredate
     FROM sales
 
     LEFT JOIN products ON sales.productid = products.productid
@@ -11,17 +26,5 @@ WITH sales_EMPL AS(
     LEFT JOIN countries ON cities.countryid = countries.countryid
 )
 
-select 
-    CONCAT(firstname, ' ', lastname) as employeename,
-    categoryname,
-    productname,
-    price,
-    quantity,
-    discount,    
-    (price * quantity) - (price * discount) as total,
-    salesdate,
-    cityname,
-    countryname,
-    resistant,
-    isallergic
+select *
 from sales_EMPL

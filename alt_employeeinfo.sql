@@ -13,5 +13,5 @@ SELECT
     price, 
     quantity,
     discount,
-    (price * quantity) - (price * discount) as total
+    (price * quantity) - (price * discount) as totalprice
 FROM employee_info
