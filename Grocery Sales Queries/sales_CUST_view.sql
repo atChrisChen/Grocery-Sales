@@ -1,4 +1,4 @@
-CREATE VIEW sales_CUST_view AS
+CREATE OR REPLACE VIEW sales_CUST_view AS
 SELECT
     CONCAT(customers.firstname, ' ', customers.lastname) as customername,
     categories.categoryname,
@@ -22,3 +22,7 @@ LEFT JOIN customers ON sales.customerid = customers.customerid
 LEFT JOIN cities ON customers.cityid = cities.cityid
 
 LEFT JOIN countries ON cities.countryid = countries.countryid
+
+WHERE 
+    sales.salesdate IS NOT NULL AND 
+    sales.salesdate < DATE '2018-05-01';

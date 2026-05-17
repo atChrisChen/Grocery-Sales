@@ -1,4 +1,4 @@
-CREATE VIEW sales_EMPL_view AS
+CREATE OR REPLACE VIEW sales_EMPL_view AS
 SELECT
     CONCAT(employees.firstname, ' ', employees.lastname) as employeename,
     categories.categoryname,
@@ -24,3 +24,7 @@ LEFT JOIN employees ON sales.salespersonid = employees.employeeid
 LEFT JOIN cities ON employees.cityid = cities.cityid
 
 LEFT JOIN countries ON cities.countryid = countries.countryid
+
+WHERE 
+    sales.salesdate IS NOT NULL AND 
+    sales.salesdate < DATE '2018-05-01';
