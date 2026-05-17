@@ -1,3 +1,7 @@
-select categoryname, count(DISTINCT(customername))
+select categoryname, count(distinct(customername))
 from sales_cust_view
-GROUP BY categoryname
+group by categoryname
+union all
+select 'All Categories', count(distinct(customername)) 
+from sales_cust_view
+ORDER BY categoryname
