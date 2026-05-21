@@ -15,7 +15,9 @@ LEFT JOIN categories ON products.categoryid = categories.categoryid
 LEFT JOIN customers ON sales.customerid = customers.customerid
 LEFT JOIN cities ON customers.cityid = cities.cityid
 
-WHERE sales.salesdate IS NOT NULL
+WHERE 
+    sales.salesdate IS NOT NULL AND 
+    sales.salesdate < DATE '2018-05-01'
 
 GROUP BY
     DATE_TRUNC('month', sales.salesdate),
