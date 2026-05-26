@@ -1,3 +1,16 @@
-"# Grocery-Sales" 
+# Dashbaord Overview
 
-https://www.kaggle.com/datasets/andrexibiza/grocery-sales-dataset?select=sales.csv
+The purpose of this project is to analyze a relational database of
+grocery sales to create an interactive business intelligence dashboard.
+It utilizes and end-to-end workflow, starting from data requirements
+gathering and data collection, followed by data cleaning and
+preprocessing to ensure consistency and accuracy across the dataset.
+Once the resulting dataset has been curated, exploratory data analysis
+was then performed to identify key patterns in sales performance,
+customer behaviour, and category distribution. This was complemented
+with efficient querying and aggregation of data to isolate the data in a
+way that allowed the creation of calculated metrics. Finally, the
+processed data was visualized through the use of pivot tables, KPI
+cards, slicers, and timelines, resulting in an interactive dashboarrd
+used for reporting sales trends, geographics performance, and
+cateogry-level analysis.
