@@ -1,0 +1,23 @@
+\subsection{Sales Revenue}
+This metric calculates the sales revenue within each product category..
+\begin{lstlisting}[language=SQL]
+SELECT 
+    categoryname, 
+    sum(totalprice) as sum_total_sales
+FROM sales_empl_view
+GROUP BY 
+    categoryname
+    
+UNION ALL 
+
+SELECT 
+    'All Categories', 
+    sum(totalprice) as sum_total_sales
+FROM sales_empl_view
+ORDER BY 
+    categoryname
+\end{lstlisting}
+\textbf{Output Preview:}
+\begin{center}
+    \includegraphics[width=0.6\linewidth]{Images/4.KPI_sales-revenue.png}
+\end{center}

@@ -1,0 +1,23 @@
+\subsection{Unique Customer Count}
+This metric calculates the total number of distinct customers who made purchases within each product category.
+\begin{lstlisting}[language=SQL]
+SELECT 
+    categoryname, 
+    count(distinct(customername)) as count_unique_customers
+FROM sales_cust_view
+GROUP BY
+    categoryname
+    
+UNION ALL
+
+SELECT 
+    'All Categories', 
+    count(distinct(customername)) as count_unique_customers
+FROM sales_cust_view
+ORDER BY 
+    categoryname
+\end{lstlisting}
+\textbf{Output Preview:}
+\begin{center}
+    \includegraphics[width=0.7\linewidth]{Images/1.KPI_count-of-unique-customers.png}
+\end{center}

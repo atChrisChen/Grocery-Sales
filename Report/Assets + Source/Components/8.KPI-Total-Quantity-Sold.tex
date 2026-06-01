@@ -1,0 +1,23 @@
+\subsection{Total Quantity Sold}
+This metric calculates the total quantity of products sold within each product category.
+\begin{lstlisting}[language=SQL]
+SELECT 
+    categoryname, 
+    sum(quantity) as quantity_sold
+FROM sales_CUST_view
+GROUP BY 
+    categoryname
+
+UNION ALL 
+
+SELECT 
+    'All Categories', 
+    sum(quantity) as quantity_sold
+FROM sales_empl_view
+ORDER BY 
+    categoryname
+\end{lstlisting}
+\textbf{Output Preview:}
+\begin{center}
+    \includegraphics[width=0.6\linewidth]{Images/2.KPI_total-quantity-sold.png}
+\end{center}

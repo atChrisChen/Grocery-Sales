@@ -1,0 +1,35 @@
+\subsection{Employee Sales Aggregation View}
+This SQL view was created to aggregate and structure transactional sales data at the employee level by joining records with product, category, employee, and geographic information. It generates a detailed dataset containing employee details, product details, pricing, discounts, and computed total sales values.
+\begin{lstlisting}[language=SQL]
+CREATE OR REPLACE VIEW sales_EMPL_view AS
+SELECT
+    CONCAT(employees.firstname, ' ', employees.lastname) as employeename,
+    categories.categoryname,
+    products.productname,
+    products.price,
+    sales.quantity,
+    sales.discount,    
+    (products.price * sales.quantity) * (1 - sales.discount) as totalprice,
+    sales.salesdate,
+    cities.cityname,
+    countries.countryname,
+    products.resistant,
+    products.isallergic,
+    employees.birthdate as employeebirthdate,
+    employees.gender as employeegender,
+    employees.hiredate as employeehiredate
+FROM sales
+LEFT JOIN 
+    products ON sales.productid = products.productid
+LEFT JOIN 
+    categories ON products.categoryid = categories.categoryid
+LEFT JOIN 
+    employees ON sales.salespersonid = employees.employeeid
+LEFT JOIN 
+    cities ON employees.cityid = cities.cityid
+LEFT JOIN 
+    countries ON cities.countryid = countries.countryid
+WHERE 
+    sales.salesdate IS NOT NULL AND 
+    sales.salesdate < DATE '2018-05-01';
+\end{lstlisting}
