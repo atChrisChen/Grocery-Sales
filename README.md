@@ -45,4 +45,12 @@ All KPI cards are dynamically updated through a Category Name slicer.
 # Repository Contents
 - SQL queries used for data aggregation  
 - Dashboard KPI and charts overview  
-- Insights report  
+- Insights report
+
+---
+
+## Dataset Source
+
+All analysis in this project is based on the following publicly available dataset:
+
+[Grocery Sales Dataset (Kaggle)](https://www.kaggle.com/datasets/andrexibiza/grocery-sales-dataset)
